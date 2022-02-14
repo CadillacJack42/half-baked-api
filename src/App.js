@@ -7,7 +7,6 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Spinner />
       <PokemonSearch />
       <YelpSearch />
       {/* stretch goal: <WeatherSearch /> */}
