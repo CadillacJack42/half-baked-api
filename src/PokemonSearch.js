@@ -1,27 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import PokemonList from './Components/PokemonList';
+import Spinner from './Components/Spinner';
 
 export default function PokemonSearch() {
-      // you'll need to track your pokemon search results, the loading state, and one form field: name. For this form field, set a real initial values (like 'pikachu') so the form populates with a default value.
-  
+  const netlifyURL = `/.netlify/functions/pokemon`;
+
+  const [queryResults, setQueryResults] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [formName, setformName] = useState('snorlax');
+
+  useEffect(() => {
+    queryResults && setIsLoading(false);
+  }, [queryResults]);
+
   async function handlePokemonSubmit(e) {
     e.preventDefault();
-      
-        // set the loading state to true
-        // use fetch to make a request to your netlify pokemon function. Be sure to pass the pokemon name as a query param in the URL
-  
-        // put the jsonified data in state and set the loading state to false
+    setIsLoading(true);
+    const response = await fetch(`${netlifyURL}?pokemon=${formName}`);
+    const json = await response.json();
+    setQueryResults(json);
   }
-      
+
   return (
-    <section className='pokemon'>
-      {/* make the fetch on submit */}
-      <form>
-            Search pokemon for a city
-        {/* add inputs/labels for city name, state, and country, using all the things we need with react forms. Don't forget to use the value property to sync these up with the default values in react state */}
+    <section className="pokemon">
+      <form onSubmit={handlePokemonSubmit}>
+        Search pokemon by
+        <label>
+          Name :<input value={formName} onChange={(e) => setformName(e.target.value)}></input>
+        </label>
         <button>Get pokemon</button>
       </form>
-      {/* Make a PokemonList component to import and use here. Use a ternery to display a loading spinner (make a <Spinner /> component for this) if the data is still loading. */}
+      {isLoading ? <Spinner /> : <PokemonList pokemon={queryResults} />}
     </section>
   );
-
 }
