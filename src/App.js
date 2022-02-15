@@ -7,8 +7,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <PokemonSearch />
-      <YelpSearch />
+      <h2>Super Awesome API App Thingy</h2>
+      <div className="api-container">
+        <PokemonSearch />
+        <YelpSearch />
+      </div>
+
       {/* stretch goal: <WeatherSearch /> */}
     </div>
   );

@@ -2,13 +2,13 @@
   box-sizing: border-box;
 }
 
-.App, body, html, #root {
+.App, body, html, #root, .api-container {
   background-color: white;
   text-align: center;
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
+  /* display: flex;
+  justify-content: space-around; */
 }
 
 .App-logo {
@@ -70,4 +70,8 @@ section li {
 
 label {
   display: block;
+}
+.api-container {
+  display: flex;
+  justify-content: space-around;
 }
