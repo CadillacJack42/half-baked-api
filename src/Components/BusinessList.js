@@ -2,7 +2,6 @@
 import React from 'react';
 
 export default function BusinessList({ list }) {
-  console.log(list);
   return (
     <div>
       {list

@@ -1,7 +1,6 @@
 import PokemonSearch from './PokemonSearch';
 import YelpSearch from './YelpSearch';
-import WeatherSearch from './WeatherSearch';
-import Spinner from './Components/Spinner';
+// import WeatherSearch from './WeatherSearch';
 import './App.css';
 
 function App() {
