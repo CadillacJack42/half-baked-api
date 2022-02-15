@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 require('dotenv').config();
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   const pokemonURL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex/';
   try {
     const response = await fetch(`${pokemonURL}?pokemon=${event.queryStringParameters.pokemon}`);
@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(json),
     };
   } catch (error) {
-    console.log(error);
+    alert(error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed fetching data' }),
